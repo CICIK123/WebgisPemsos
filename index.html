@@ -1,0 +1,402 @@
+<style>
+html {
+    min-height: 100%; 
+}
+body {
+    background-color: grey;
+	background-image: url("Gunung Bromo.jpg");
+	background-size: cover; 
+}
+        html, body, #map {
+            width: 100%;
+            height: 90%;
+            padding: 5;
+            margin: 0;
+	}
+		h1 {
+		text-align:center;
+		text-decoration: underline overline;
+
+        </style>
+        <title>WEBGIS PEMSOS DESA NOGOSAREN</title>
+		<body>
+	}
+
+         <h2> <img src="LOGO BPN.png" alt="image" height="100" width="100">Kantor Pertanahan Kabupaten Probolinggo</h2>
+			
+<center>
+ 
+
+	
+</head>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+		        h1 {
+		text-align:center;
+		text-decoration: underline ;
+		font: bradley hand itc
+        font-size: x-large;
+		color: rgb(255, 255, 255)
+        }
+        .color{color: rgb(255, 255, 255);
+		font: georgian
+		}  
+				span { 
+		color: rgb(255, 255, 255)
+		}
+				div {
+		color: rgb(255, 255, 255)
+		}
+				h2 {
+		color: rgb(255, 215, 0);
+		
+		}
+        </style>
+		    </head>
+    <body>
+        <h1>
+            PEMETAAN SOSIAL AKSES REFORMA AGRARIA</h1>
+			<h1> DESA NOGOSAREN </h1>
+	 <span class="headlines">Pemetaan Sosial</span><br>
+     <div class="sublines">
+        Merupakan kegiatan wawancara yang dilakukan oleh Field Staff Akses Reforma kepada calon peserta program pemberdayaan tanah masyarakat<br>		
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Style List</title>
+<style type="text/css">
+<!--
+#leftmenu ul {
+width: 250px;
+list-style-type:none;
+padding:0; margin:0;
+}
+#leftmenu a:link, #leftmenu a:visited, #leftmenu a:active {
+padding-left: 15px;
+text-decoration: none;
+}
+#leftmenu a {
+padding: 5px 0px 5px 15px; display: block;
+background: #FF7F50 no-repeat left center;
+
+margin: 0px 0px 1px; color: #ffffff;
+}
+#leftmenu a:hover {
+background: #FF7F50 no-repeat left center; color: #ffffff
+}
+-->
+</style>
+</head>
+<body>
+<div id="leftmenu">
+<ul>
+<li><a href="APA ITU REFORMA AGRARIA.mp4">Sekilas tentang Reforma Agraria</a></li>
+<li><a href="Pemsos.mp4">Pemsos Kantah Kab. Prob</a></li>
+</div>
+</body>
+
+<!doctype html>
+
+</style>
+        <style>
+        html, body {
+            background-color: grey;
+        }
+        .ol-control button {
+            background-color:  !important;
+            color: #000000 !important;
+            border-radius: 0px !important;
+        }
+        .ol-zoom, .geolocate, .gcd-gl-control .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 3px !important;
+        }
+        .ol-scale-line {
+            background: none !important;
+        }
+        .ol-scale-line-inner {
+            border: 2px solid #f8f8f8 !important;
+            border-top: none !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+            color: black !important;
+        }
+        </style>
+
+        <style>
+        .geolocate {
+            top: 65px;
+            left: .5em;
+        }
+        .ol-touch .geolocate {
+            top: 80px;
+        }
+        </style>
+
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/DesaNogosaren_1.js"></script>
+        <script src="data/PemetaanSosial_2.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-7.84119288756,113.440581939],[-7.81727349064,113.471855249]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        L.control.locate().addTo(map);
+        var measureControl = new L.Control.Measure({
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        var overlay_GoogleSatelite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            opacity: 1.0
+        });
+        overlay_GoogleSatelite_0.addTo(map);
+        map.addLayer(overlay_GoogleSatelite_0);
+        function pop_DesaNogosaren_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KECAMATAN'] !== null ? Autolinker.link(String(feature.properties['KECAMATAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KELURAHAN'] !== null ? Autolinker.link(String(feature.properties['KELURAHAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPEHAK'] !== null ? Autolinker.link(String(feature.properties['TIPEHAK'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPEPRODUK'] !== null ? Autolinker.link(String(feature.properties['TIPEPRODUK'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TAHUN'] !== null ? Autolinker.link(String(feature.properties['TAHUN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NIB'] !== null ? Autolinker.link(String(feature.properties['NIB'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DesaNogosaren_1_0() {
+            return {
+                pane: 'pane_DesaNogosaren_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.76)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,168,196,0.76)',
+            }
+        }
+        map.createPane('pane_DesaNogosaren_1');
+        map.getPane('pane_DesaNogosaren_1').style.zIndex = 401;
+        map.getPane('pane_DesaNogosaren_1').style['mix-blend-mode'] = 'normal';
+        var layer_DesaNogosaren_1 = new L.geoJson(json_DesaNogosaren_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_DesaNogosaren_1',
+            onEachFeature: pop_DesaNogosaren_1,
+            style: style_DesaNogosaren_1_0,
+        });
+        bounds_group.addLayer(layer_DesaNogosaren_1);
+        map.addLayer(layer_DesaNogosaren_1);
+        function pop_PemetaanSosial_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">KELURAHAN</th>\
+                        <td>' + (feature.properties['KELURAHAN'] !== null ? Autolinker.link(String(feature.properties['KELURAHAN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPEHAK'] !== null ? Autolinker.link(String(feature.properties['TIPEHAK'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TAHUN'] !== null ? Autolinker.link(String(feature.properties['TAHUN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NIB</th>\
+                        <td>' + (feature.properties['NIB'] !== null ? Autolinker.link(String(feature.properties['NIB'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LUAS TERTULIS</th>\
+                        <td>' + (feature.properties['LUASTERTUL'] !== null ? Autolinker.link(String(feature.properties['LUASTERTUL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PEMILIK</th>\
+                        <td>' + (feature.properties['PEMILIK'] !== null ? Autolinker.link(String(feature.properties['PEMILIK'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SUBSEKTOR</th>\
+                        <td>' + (feature.properties['SEKTOR'] !== null ? Autolinker.link(String(feature.properties['SEKTOR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KETERAMPILAN</th>\
+                        <td>' + (feature.properties['KETERAMPIL'] !== null ? Autolinker.link(String(feature.properties['KETERAMPIL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">USAHA TAMBAHAN</th>\
+                        <td>' + (feature.properties['USHA_TMBHN'] !== null ? Autolinker.link(String(feature.properties['USHA_TMBHN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DUSUN</th>\
+                        <td>' + (feature.properties['DUSUN'] !== null ? Autolinker.link(String(feature.properties['DUSUN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOMOR'] !== null ? Autolinker.link(String(feature.properties['NOMOR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SEKTOR</th>\
+                        <td>' + (feature.properties['SEKTOR_1'] !== null ? Autolinker.link(String(feature.properties['SEKTOR_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FOTO</th>\
+                        <td>' + (feature.properties['FOTO'] !== null ? '<img style="height= 80px; width: 100px" src="images/' + String(feature.properties['FOTO']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: "Auto"});
+        }
+
+        function style_PemetaanSosial_2_0(feature) {
+            switch(String(feature.properties['SEKTOR_1'])) {
+                case 'UMKM':
+                    return {
+                pane: 'pane_PemetaanSosial_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,2,227,1.0)',
+            }
+                    break;
+                case 'PERTANIAN':
+                    return {
+                pane: 'pane_PemetaanSosial_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,237,121,1.0)',
+            }
+                    break;
+                case 'PETERNAKAN':
+                    return {
+                pane: 'pane_PemetaanSosial_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(18,167,241,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PemetaanSosial_2');
+        map.getPane('pane_PemetaanSosial_2').style.zIndex = 402;
+        map.getPane('pane_PemetaanSosial_2').style['mix-blend-mode'] = 'normal';
+        var layer_PemetaanSosial_2 = new L.geoJson(json_PemetaanSosial_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PemetaanSosial_2',
+            onEachFeature: pop_PemetaanSosial_2,
+            style: style_PemetaanSosial_2_0,
+        });
+        bounds_group.addLayer(layer_PemetaanSosial_2);
+        map.addLayer(layer_PemetaanSosial_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Pemetaan Sosial<br /><table><tr><td style="text-align: center;"><img src="legend/PemetaanSosial_2_UMKM0.png" /></td><td>UMKM</td></tr><tr><td style="text-align: center;"><img src="legend/PemetaanSosial_2_PERTANIAN1.png" /></td><td>PERTANIAN</td></tr><tr><td style="text-align: center;"><img src="legend/PemetaanSosial_2_PETERNAKAN2.png" /></td><td>PETERNAKAN</td></tr></table>': layer_PemetaanSosial_2,'<img src="legend/DesaNogosaren_1.png" /> Desa Nogosaren': layer_DesaNogosaren_1,"Google Satelite": overlay_GoogleSatelite_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_PemetaanSosial_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'PEMILIK'}));
+        </script>
+    </body>
+</html>
